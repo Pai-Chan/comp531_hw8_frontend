@@ -17,8 +17,8 @@ const Profile = ({dispatch}) => (
 			</div>
 			<div>
 				<ul className="nav navbar-nav">
-					<li><a href="#" onClick={() => {dispatch(getAction(ActionType.NAV2MAIN))}}>Main Page</a></li>
-					<li className="active"><a href="#">My Profile</a></li>
+					<li id="main-page-nav"><a href="#" onClick={() => {dispatch(getAction(ActionType.NAV2MAIN))}}>Main Page</a></li>
+					<li className="active" id="profile-page-nav"><a href="#">My Profile</a></li>
 				</ul>
 			</div>
 			</div>

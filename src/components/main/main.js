@@ -29,8 +29,8 @@ export const Main = ({dispatch, successMessage, errorMessage}) => {
 				</div>
 				<div>
 					<ul className="nav navbar-nav">
-						<li className="active"><a href="#">Main Page</a></li>
-						<li><a href="#" onClick={() => {dispatch({type:ActionType.NAV2PROFILE})}}>My Profile</a></li>
+						<li className="active" id="main-page-nav"><a href="#">Main Page</a></li>
+						<li id="profile-page-nav"><a href="#" onClick={() => {dispatch({type:ActionType.NAV2PROFILE})}}>My Profile</a></li>
 					</ul>
 				</div>
 				</div>

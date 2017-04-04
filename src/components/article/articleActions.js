@@ -10,13 +10,15 @@ export const filterArticles = (filterWord) => {
 }
 
 //post new article
-export const postNewArticle = (username, newArticle) => {
+export const postNewArticle = (username, newArticle, fd) => {
 	return (dispatch) => {
-		if (newArticle.value == '') {
+		console.log(fd)
+		if (fd.text == '') {
 			dispatch({type:ActionType.ERRORMESSAGE, message:'Empty article text is not allowed.'})
 			return
 		}
-		return resource('POST', `article`, {text: newArticle.value})
+		// 'POST' method, endpoint is article, fd is payload, true means fd is not json
+		return resource('POST', `article`, fd, true)
 		.then((response) => {
 			response.articles.forEach((article) => {
 				dispatch({
@@ -29,11 +31,37 @@ export const postNewArticle = (username, newArticle) => {
 					part:{commentsShown:false}
 				})
 			})
-			newArticle.value = ""
-
+			newArticle.value = ''
 		})
 	}
 }
+
+//put article
+export const putArticle = (articleId, newArticle) => {
+	return (dispatch) => {
+		let text = newArticle.value
+		if (text == '') {
+			dispatch({type:ActionType.ERRORMESSAGE, message:'Empty article text is not allowed.'})
+			return
+		}
+		// 'POST' method, endpoint is article, fd is payload, true means fd is not json
+		return resource('PUT', `articles/${articleId}`, {text})
+		.then((response) => {
+			response.articles.forEach((article) => {
+				dispatch({
+					type:ActionType.ADD_ARTICLE_PART, 
+					articleId:article._id, 
+					part:article
+				})
+				dispatch({type:ActionType.ADD_ARTICLE_PART, 
+					articleId:article._id, 
+					part:{commentsShown:false}
+				})
+			})
+		})
+	}
+}
+
 
 //put json data from the server side of articles into state
 export const getArticles = (username) => {
@@ -79,6 +107,55 @@ export const hideComments = (articleId) => {
 	}	
 }
 
+export const addComment = (articleId, newComment) => {
+	return (dispatch) => {
+		let text = newComment.value
+		if (text == '') {
+			dispatch({type:ActionType.ERRORMESSAGE, message:'Empty article text is not allowed.'})
+			return
+		}
+		// 'POST' method, endpoint is article, fd is payload, true means fd is not json
+		return resource('PUT', `articles/${articleId}`, {text: text, commentId: -1})
+		.then((response) => {
+			response.articles.forEach((article) => {
+				dispatch({
+					type:ActionType.ADD_ARTICLE_PART, 
+					articleId:article._id, 
+					part:article
+				})
+				dispatch({type:ActionType.ADD_ARTICLE_PART, 
+					articleId:article._id, 
+					part:{commentsShown:true}
+				})
+			})
+		})
+	}
+}
+
+export const updateComment = (articleId, commentId, updatedComment) => {
+	return (dispatch) => {
+		let text = updatedComment.value
+		if (text == '') {
+			dispatch({type:ActionType.ERRORMESSAGE, message:'Empty comment text is not allowed.'})
+			return
+		}
+		return resource('PUT', `articles/${articleId}`, {text: text, commentId: commentId})
+		.then((response) => {
+			response.articles.forEach((article) => {
+				dispatch({
+					type:ActionType.ADD_ARTICLE_PART, 
+					articleId:article._id, 
+					part:article
+				})
+				dispatch({type:ActionType.ADD_ARTICLE_PART, 
+					articleId:article._id, 
+					part:{commentsShown:true}
+				})
+			})
+		})
+	}
+}
+
 //filter out the articles without containg filterWord
 export const filterShownArticles = (articleList, filterWord) => {
 	return articleList.filter(article => 
@@ -112,3 +189,4 @@ export const sortByTimeAndArrayize = (articles) => {
 
 	return 	articlesAntiChron
 }
+

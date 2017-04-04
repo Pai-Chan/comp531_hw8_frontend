@@ -16,7 +16,7 @@ export const ArticleView = ({dispatch, articles, filterWord, username}) => {
 	const shownArticlesList = filterShownArticles(articlesAntiChron, filterWord)
 
 	const articlesInDOM = shownArticlesList.map((article) => {
-		return <Article key={article._id} dispatch={dispatch} articleId={article._id} article={article} />
+		return <Article key={article._id} dispatch={dispatch} username={username} articleId={article._id} article={article} />
 	})
 
 	return (

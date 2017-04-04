@@ -26,7 +26,7 @@ export const Login = ({dispatch}) => {
 							<input type="password" className="form-control" id="loginInputPassword" 
 							placeholder="Password" ref={(node) => {password = node}}/>
 						</div>
-						<button type="button" className="btn btn-default" onClick={() => {
+						<button type="button" className="btn btn-default" id="loginBtn" onClick={() => {
 								dispatch(actLogin(username.value, password.value))
 							}}>Log In</button>
 					</form>

@@ -29,15 +29,26 @@ export function getAction(type, otherStatesObj) {
 
 export const url = 'https://webdev-dummy.herokuapp.com'
 
-export function resource(method, endpoint, payload){
+export function resource(method, endpoint, payload, notJson){
 
     const options =  {
         method,
-        credentials: 'include',
-        headers: {'Content-Type': 'application/json'}
+        credentials: 'include'
+    }
+
+    if (!notJson) {
+        options.headers = {
+            'Content-Type': 'application/json'
+        }
     }
     
-    if (payload) options.body = JSON.stringify(payload)
+    if (payload && !notJson) {
+        options.body = JSON.stringify(payload)
+    }
+
+    if (payload && notJson) {
+        options.body = payload
+    }
 
     return fetch(`${url}/${endpoint}`, options)
     .then(response => {

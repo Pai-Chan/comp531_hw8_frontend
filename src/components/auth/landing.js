@@ -10,13 +10,13 @@ const Landing = ({dispatch, errorMessage, successMessage}) => {
 
 	//for display success message
 	const successMessageContainer = successMessage == "" ? null : (
-		<div className="alert alert-success">{successMessage}</div>		
+		<div className="alert alert-success" id="success_message">{successMessage}</div>		
 	)
 
 	//for display error message, when register or login process goes wrong, 
 	//it shows up related text info
 	const errorMessageContainer = errorMessage == "" ? null : (
-		<div className="alert alert-danger">{errorMessage}</div>
+		<div className="alert alert-danger" id="error_message">{errorMessage}</div>
 	)
 
 	return (

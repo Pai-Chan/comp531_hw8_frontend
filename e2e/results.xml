@@ -1,0 +1,15 @@
+<testsuite name="Mocha Tests" tests="13" failures="0" errors="0" skipped="0" timestamp="Tue, 04 Apr 2017 03:42:53 GMT" time="45.399">
+<testcase classname="Test Ricebook" name="Log in as your test user" time="0.559"/>
+<testcase classname="Test Ricebook" name="Register a new user" time="3.872"/>
+<testcase classname="Test Ricebook" name="Create a new article and validate the article appears in the feed" time="1.804"/>
+<testcase classname="Test Ricebook" name="Edit an article and validate the article text has updated" time="2.387"/>
+<testcase classname="Test Ricebook" name="Update the status headline and verify the change" time="1.729"/>
+<testcase classname="Test Ricebook" name="Count the number of followed users" time="0.522"/>
+<testcase classname="Test Ricebook" name="Add the user 'Follower' to the list of followed users and verify the count increases by one" time="5.761"/>
+<testcase classname="Test Ricebook" name="Remove the user 'Follower' from the list of followed users and verify the count decreases by one" time="5.653"/>
+<testcase classname="Test Ricebook" name="Search for 'Only One Article Like This' and verify only one article shows, and verify the author" time="1.481"/>
+<testcase classname="Test Ricebook" name="Navigate to the profile view, Update the user's email and verify" time="4.528"/>
+<testcase classname="Test Ricebook" name="Navigate to the profile view, Update the user's zipcode and verify" time="4.408"/>
+<testcase classname="Test Ricebook" name="Navigate to the profile view, Update the user's password, verify a 'will not change' message is returned" time="3.006"/>
+<testcase classname="shutdown" name="now" time="0.078"/>
+</testsuite>

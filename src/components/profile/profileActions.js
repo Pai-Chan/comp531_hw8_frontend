@@ -90,6 +90,18 @@ export const getHeadline = (username) => {
 	}
 }
 
+export const updateAvatar = (fd) => {
+	return (dispatch) => {
+		return resource('PUT', 'avatar', fd, true)
+		.then((response) => {
+			dispatch({type:ActionType.SET_PROFILE_ITEM, profile: {avatar: response.avatar}})
+			dispatch({type:ActionType.SUCCESSMESSAGE, message:'Successful Update.'})
+		}).catch((err) => {
+			dispatch({type:ActionType.ERRORMESSAGE, message:`There was an error when updating avatar. ${err}`})
+		})
+	}
+}
+
 export const updateEmail = (email) => {
 	return (dispatch) => {
 		return resource('PUT', 'email', {email})
@@ -180,7 +192,7 @@ export const updateProfile = (username, updatedFields) => {
 						break
 					case 'password':
 						if (profile[key] != updatedFields.confirmation.value) {
-							dispatch({type:ActionType.ERRORMESSAGE, message: "You must input two indentical passwords."})
+							dispatch({type:ActionType.ERRORMESSAGE, message: "There was an error, the password will not change."})
 							isValidForm = false
 							return
 						}

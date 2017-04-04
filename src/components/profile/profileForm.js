@@ -15,12 +15,12 @@ export const ProfileForm = ({dispatch, profile, username, successMessage, errorM
 	let updatedFields = {}
 
 	const successMessageContainer = successMessage == "" ? null : (
-		<div className="alert alert-success">{successMessage}</div>		
+		<div className="alert alert-success" id="success-message">{successMessage}</div>		
 	)
 
 
 	const errorMessageContainer = errorMessage == "" ? null : (
-		<div className="alert alert-danger">{errorMessage}</div>
+		<div className="alert alert-danger" id="error-message">{errorMessage}</div>
 	)
 
 	//convert timestamp data to readable string
@@ -35,10 +35,10 @@ export const ProfileForm = ({dispatch, profile, username, successMessage, errorM
 			<div className="panel panel-default">
 				<div className="panel-heading"><h3>Current Info of {username}</h3></div>
 				<div className="panel-body">
-					<p>Date of Birth: {dobStr}</p>
-					<p>Email Address: {profile.email}</p>
-					<p>Headline Status: {profile.headline}</p>
-					<p>Zipcode: {profile.zipcode}</p>
+					<p id="current-dob">Date of Birth: {dobStr}</p>
+					<p id="current-email">Email Address: {profile.email}</p>
+					<p id="current-headline">Headline Status: {profile.headline}</p>
+					<p id="current-zipcode">Zipcode: {profile.zipcode}</p>
 				</div>
 			</div>
 
@@ -56,7 +56,7 @@ export const ProfileForm = ({dispatch, profile, username, successMessage, errorM
 							<input ref={
 								(node) => {
 									updatedFields.email = node
-							}} type="text" className="form-control" placeholder="New Email Address"/>
+							}} type="text" id="new-email" className="form-control" placeholder="New Email Address"/>
 						</div>
 
 						<div className="form-group">
@@ -64,7 +64,7 @@ export const ProfileForm = ({dispatch, profile, username, successMessage, errorM
 							<input ref={
 								(node) => {
 									updatedFields.headline = node
-							}} type="text" className="form-control" placeholder="New Headline Status"/>
+							}} type="text" id="new-headline" className="form-control" placeholder="New Headline Status"/>
 						</div>
 
 						<div className="form-group">
@@ -72,7 +72,7 @@ export const ProfileForm = ({dispatch, profile, username, successMessage, errorM
 							<input ref={
 								(node) => {
 									updatedFields.zipcode = node
-							}} type="text" className="form-control" placeholder="New Zipcode"/>
+							}} type="text" id="new-zipcode" className="form-control" placeholder="New Zipcode"/>
 						</div>
 
 						<div className="form-group">
@@ -80,17 +80,17 @@ export const ProfileForm = ({dispatch, profile, username, successMessage, errorM
 							<input ref={
 								(node) => {
 									updatedFields.password = node
-							}}type="password" className="form-control" placeholder="New Password"/>
+							}}type="password" id="new-password" className="form-control" placeholder="New Password"/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="newPassword">Confirmation: </label>
 							<input ref={
 								(node) => {
 									updatedFields.confirmation = node
-							}}type="password" className="form-control" placeholder="New Password"/>
+							}}type="password" id="new-confirmation" className="form-control" placeholder="New Password"/>
 						</div>
 						<button type="reset" className="btn btn-default">Clear</button>
-						<button type="button" className="btn btn-default" onClick={() => {
+						<button type="button" className="btn btn-default" id="update-profile-btn" onClick={() => {
 							dispatch(updateProfile(username, updatedFields))
 						}}>Update</button>
 					</form>		

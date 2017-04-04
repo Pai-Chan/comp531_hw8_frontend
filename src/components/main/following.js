@@ -10,11 +10,11 @@ export const Following = ({dispatch, followeds, errorMessage}) => {
 
 	const followedsInDOM = Object.keys(followeds).map((username, index) => {
 		return (
-			<div className="panel panel-default" key={username}>
+			<div className="panel panel-default followed" key={username}>
 				<div className="panel-body">
 					<img src={followeds[username].avatar} className="img-thumbnail img-responsive"/>
 					<p>{username + ": " + followeds[username].headline}</p>
-					<button type="button" className="btn btn-danger btn-xs" onClick={() => {
+					<button type="button" className="btn btn-danger btn-xs" id={username + "-remove-btn"}onClick={() => {
 						dispatch(removeFollowed(username))
 					}}><i className="glyphicon glyphicon-remove"></i></button>
 				</div>
@@ -29,10 +29,10 @@ export const Following = ({dispatch, followeds, errorMessage}) => {
 				<form className="form-inline">
 					<div className="form-group">
 						<label htmlFor="mystatusInput" className="sr-only">New User</label>
-						<input type="text" className="form-control" id="mystatusInput" placeholder="User" ref={(node) => {
+						<input type="text" className="form-control" id="new-followed-input" placeholder="User" ref={(node) => {
 							newFollowed = node
 						}}/>
-						<button type="button" className="btn btn-default" onClick={() => {
+						<button type="button" className="btn btn-default" id="new-followed-add-btn" onClick={() => {
 							dispatch(addFollowed(newFollowed.value))
 							newFollowed.value = ''
 						}}>Add</button>

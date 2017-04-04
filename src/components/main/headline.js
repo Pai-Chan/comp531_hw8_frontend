@@ -11,19 +11,19 @@ export const Headline = ({dispatch, avatar, headline, username, displayName}) =>
 	let newHeadline
 	return (
 		<div className="panel panel-default">
-			<div className="panel-heading">{username}</div>
+			<div className="panel-heading" id="currentLoginedUsername">{username}</div>
 			<div className="panel-body">
-				<button type="button" className="btn btn-default" onClick={() => dispatch(actLogout())}>Log Out</button>
+				<button type="button" className="btn btn-default" id="logoutBtn" onClick={() => dispatch(actLogout())}>Log Out</button>
 				<br/>
 				<img src={avatar} className="img-thumbnail img-responsive"/>
-				<p>{headline}</p>
+				<p id="current-headline">{headline}</p>
 				<form className="form-inline">
 					<div className="form-group">
 						<label htmlFor="mystatusInput" className="sr-only">Status</label>
 						<input type="text" className="form-control input-normal" id="mystatusInput" placeholder="Status" ref={(node) => {
 							newHeadline = node
 						}}/>
-						<button type="button" className="btn btn-default" onClick={() => {
+						<button type="button" className="btn btn-default" id="update-headline-btn" onClick={() => {
 							dispatch(setHeadline(newHeadline.value))
 							newHeadline.value = ''
 						}}>Update</button>

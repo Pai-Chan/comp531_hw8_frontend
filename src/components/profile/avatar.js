@@ -1,8 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import {updateAvatar} from './profileActions'
+
 // Aavat view component
 const Avatar = ({dispatch, username, avatar, successMessage, errorMessage}) => {
+
+	let fd = new FormData()
+
+	const handleImageChange = (e) => {
+		let file = e.target.files[0]
+		fd.append('image', file)
+	}
+
 	return (
 		<div className="panel panel-default">
 			<div className="panel-heading"><h3>The Avatar of {username}</h3></div>
@@ -13,7 +23,10 @@ const Avatar = ({dispatch, username, avatar, successMessage, errorMessage}) => {
 					</div>
 				</div>
 				<label htmlFor="profilePictureInput">Upload new picture: </label>
-				<input type="file" id="profilePictureInput"/>
+				<input type="file" onChange={(e)=>{handleImageChange(e)}}/>
+				<input type="button" className="btn btn-default" value="Post" onClick={() => {
+					dispatch(updateAvatar(fd))
+				}}/>
 			</div>
 		</div>
 

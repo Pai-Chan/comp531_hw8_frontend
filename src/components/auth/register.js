@@ -19,39 +19,39 @@ export const Register = ({dispatch}) => {
 							<label htmlFor="signupInputUsername">Username:</label>
 							<input ref={(node) => {
 								registerFields.username = node
-							}} type="text" className="form-control" placeholder="Username"/>
+							}} type="text" id="register_username" className="form-control" placeholder="Username"/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="signupInputEmail">Email:</label>
 							<input ref={(node) => {
 								registerFields.email = node
-							}} type="email" className="form-control" placeholder="Email"/>
+							}} type="email" id="register_email" className="form-control" placeholder="Email"/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="newDisplayName">Date of Birth: </label>
 							<input ref={(node) => {
 								registerFields.dob = node
-							}} type="date" className="form-control" placeholder="Date of Birth"/>
+							}} type="date" id="register_dob" className="form-control" placeholder="Date of Birth"/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="signupInputPassword">Zipcode:</label>
 							<input ref={(node) => {
 								registerFields.zipcode = node
-							}} type="text" className="form-control" placeholder="Password"/>
+							}} type="text" id="register_zipcode" className="form-control" placeholder="Password"/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="signupInputPassword">Password:</label>
 							<input ref={(node) => {
 								registerFields.password = node
-							}} type="password" className="form-control" placeholder="Password"/>
+							}} type="password" id="register_password" className="form-control" placeholder="Password"/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="signupInputPasswordConfirmation">Confirmation:</label>
 							<input ref={(node) => {
 								registerFields.confirmation = node
-							}} type="password" className="form-control" placeholder="Password Again"/>
+							}} type="password" id="register_confirmation" className="form-control" placeholder="Password Again"/>
 						</div>
-						<button type="button" className="btn btn-default" onClick={() => {
+						<button type="button" id="register_button" className="btn btn-default" onClick={() => {
 							dispatch(actRegistrationCheck(registerFields))
 						}}>Sign Up</button>
 					</form>
