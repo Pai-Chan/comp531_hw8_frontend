@@ -27,7 +27,7 @@ export function getAction(type, otherStatesObj) {
 // for this assignment, we don't make http calls,
 // so the effective statements are commented.
 
-export const url = 'http://127.0.0.1:3000'
+export const url = 'https://webdev-dummy.herokuapp.com'
 
 export function resource(method, endpoint, payload, notJson){
 
