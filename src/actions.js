@@ -27,7 +27,7 @@ export function getAction(type, otherStatesObj) {
 // for this assignment, we don't make http calls,
 // so the effective statements are commented.
 
-export const url = 'http://localhost:3000'
+export const url = 'http://ricebookpchw7.surge.sh'
 
 export function resource(method, endpoint, payload, notJson){
 
