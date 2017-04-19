@@ -26,6 +26,32 @@ export function getFilledMain(username){
 	}
 }
 
+export function initVisit(){
+	return (dispatch) => {
+		const username = ""
+		const password = ""
+		return resource('POST', 'login', {username, password})
+		.then((response) => {
+			if (typeof response === 'object' && response.result == 'success') {
+				dispatch({type:ActionType.LOGIN, username: response.username})
+				dispatch(getFilledMain(response.username))
+			} else {
+				if (!(username === "" && password === "")) {
+					dispatch({
+						type:ActionType.ERRORMESSAGE, 
+						message:'Username or password is wrong.'
+					})
+				}
+			}
+		}).catch((err) => {
+			dispatch({
+				type:ActionType.ERRORMESSAGE, 
+				message:`There was an error when logging in. ${err}`
+			})
+		})
+	}
+}
+
 // to act login action
 export function actLogin(username, password){
 	return (dispatch) => {
@@ -35,10 +61,12 @@ export function actLogin(username, password){
 				dispatch({type:ActionType.LOGIN, username: response.username})
 				dispatch(getFilledMain(response.username))
 			} else {
-				dispatch({
-					type:ActionType.ERRORMESSAGE, 
-					message:'Username or password is wrong.'
-				})
+				if (!(username === "" && password === "")) {
+					dispatch({
+						type:ActionType.ERRORMESSAGE, 
+						message:'Username or password is wrong.'
+					})
+				}
 			}
 		}).catch((err) => {
 			dispatch({

@@ -2,6 +2,9 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 import { actLogin } from './authActions'
+import { resource } from '../../actions'
+
+import Promise from 'bluebird'
 
 export const Login = ({dispatch}) => {
 
@@ -29,6 +32,10 @@ export const Login = ({dispatch}) => {
 						<button type="button" className="btn btn-default" id="loginBtn" onClick={() => {
 								dispatch(actLogin(username.value, password.value))
 							}}>Log In</button>
+						<button type="button" className="btn btn-default" id="loginBtnFacebook" onClick={()=>{
+							var url = 'http://localhost:3000'
+							window.location = `${url}/login/facebook`
+						}}>Log in with Facebook</button>						
 					</form>
 				</div>
 			</div>

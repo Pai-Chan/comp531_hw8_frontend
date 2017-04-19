@@ -27,7 +27,7 @@ export function getAction(type, otherStatesObj) {
 // for this assignment, we don't make http calls,
 // so the effective statements are commented.
 
-export const url = 'https://webdev-dummy.herokuapp.com'
+export const url = 'http://localhost:3000'
 
 export function resource(method, endpoint, payload, notJson){
 
@@ -55,7 +55,7 @@ export function resource(method, endpoint, payload, notJson){
         if (response.status === 200) {
             if (response.headers.get('Content-Type').indexOf('json') > 0) {
                 return response.json()
-            }else {
+            } else {
                 return response.text()
             }
         } else {

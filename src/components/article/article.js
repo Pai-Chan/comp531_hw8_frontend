@@ -14,7 +14,7 @@ export const Article = ({dispatch, username, articleId, article}) => {
 	const commentsInDOM = !article.commentsShown ? null : (
 		article.comments.map((comment) => {
 			return (
-				<Comment key={comment.commentId} dispatch={dispatch} username={username} articleId={articleId} commentId={comment.commentId} comment={comment} />				
+				<Comment key={comment._id} dispatch={dispatch} username={username} articleId={articleId} commentId={comment._id} comment={comment} />				
 			)
 		})
 	)

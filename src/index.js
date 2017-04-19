@@ -11,12 +11,13 @@ import { createStore, applyMiddleware } from 'redux'
 
 import Reducer from './reducers'
 import App from './components/app'
-// import { initialVisit } from './components/auth/authActions'
+
+import { initVisit } from './components/auth/authActions'
 
 const logger = createLogger()
 const store = createStore(Reducer, applyMiddleware(thunkMiddleware, logger))
 
-
+store.dispatch(initVisit())
 
 render(
     <Provider store={store}>

@@ -12,13 +12,13 @@ export const filterArticles = (filterWord) => {
 //post new article
 export const postNewArticle = (username, newArticle, fd) => {
 	return (dispatch) => {
-		console.log(fd)
-		if (fd.text == '') {
+		if (fd.get('text') == '') {
 			dispatch({type:ActionType.ERRORMESSAGE, message:'Empty article text is not allowed.'})
 			return
 		}
 		// 'POST' method, endpoint is article, fd is payload, true means fd is not json
-		return resource('POST', `article`, fd, true)
+		// return resource('POST', `article`, fd, true)
+		return resource('POST', 'article', {text: fd.get('text')})
 		.then((response) => {
 			response.articles.forEach((article) => {
 				dispatch({

@@ -5,6 +5,7 @@ import ActionType from '../../actions'
 
 import Register from './register'
 import Login from './login'
+import { actLogin } from './authActions'
 
 const Landing = ({dispatch, errorMessage, successMessage}) => {
 
