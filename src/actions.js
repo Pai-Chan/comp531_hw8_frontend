@@ -27,7 +27,7 @@ export function getAction(type, otherStatesObj) {
 // for this assignment, we don't make http calls,
 // so the effective statements are commented.
 
-export const url = 'http://ricebookpchw7.surge.sh'
+export const url = 'http://ricebookpchw7.herokuapp.com'
 
 export function resource(method, endpoint, payload, notJson){
 
