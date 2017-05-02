@@ -15,9 +15,6 @@ export const getFolloweds = (username) => {
 				return dispatch(getFollowedItems(username))
 			})
 			return Promise.all(promises)
-			// followedsList.forEach((follower) => {
-			// 	dispatch({type:ActionType.ADD_FOLLOWED_ITEM, username: follower.username, item: follower})
-			// })
 		})
 	}
 }

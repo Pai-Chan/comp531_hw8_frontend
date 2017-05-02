@@ -84,6 +84,8 @@ export function actLogout(){
 		.then((response) => {
 			dispatch({type:ActionType.LOGOUT})
 			dispatch({type:ActionType.NAV2LANDING})
+			dispatch({type:ActionType.CLEAR_ALL_ARTICLES})
+			dispatch({type:ActionType.CLEAR_ALL_FOLLOWEDS})
 		}).catch((err) => {
 			dispatch({
 				type:ActionType.ERRORMESSAGE, 

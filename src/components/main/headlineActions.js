@@ -2,13 +2,20 @@ import Promise from 'bluebird'
 
 import ActionType, { resource } from '../../actions'
 
-//logout clear current shared info and navigate to landing page
-export const actLogout = () => {
+// to act logout action
+export function actLogout(){
 	return (dispatch) => {
-		resource('PUT', 'logout')
+		return resource('PUT', 'logout')
 		.then((response) => {
 			dispatch({type:ActionType.LOGOUT})
 			dispatch({type:ActionType.NAV2LANDING})
+			dispatch({type:ActionType.CLEAR_ALL_ARTICLES})
+			dispatch({type:ActionType.CLEAR_ALL_FOLLOWEDS})
+		}).catch((err) => {
+			dispatch({
+				type:ActionType.ERRORMESSAGE, 
+				message:`There was an error logging out as ${response.username}. ${err}`
+			})
 		})
 	}
 }

@@ -33,7 +33,7 @@ export const Login = ({dispatch}) => {
 								dispatch(actLogin(username.value, password.value))
 							}}>Log In</button>
 						<button type="button" className="btn btn-default" id="loginBtnFacebook" onClick={()=>{
-							var url = 'http://localhost:3000'
+							var url = 'https://ricebookpchw8.herokuapp.com'
 							window.location = `${url}/login/facebook`
 						}}>Log in with Facebook</button>						
 					</form>

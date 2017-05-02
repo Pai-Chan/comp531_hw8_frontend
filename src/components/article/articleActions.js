@@ -17,8 +17,7 @@ export const postNewArticle = (username, newArticle, fd) => {
 			return
 		}
 		// 'POST' method, endpoint is article, fd is payload, true means fd is not json
-		// return resource('POST', `article`, fd, true)
-		return resource('POST', 'article', {text: fd.get('text')})
+		return resource('POST', 'article', fd, true)
 		.then((response) => {
 			response.articles.forEach((article) => {
 				dispatch({

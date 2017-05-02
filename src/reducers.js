@@ -65,6 +65,8 @@ export function followeds(state = {}, action) {
 			let deductedState = Object.assign({}, state)
 			delete deductedState[action.username]
 			return deductedState
+		case ActionType.CLEAR_ALL_FOLLOWEDS:
+			return {}
 		default:
 			return state
 	}

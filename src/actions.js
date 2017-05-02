@@ -12,6 +12,7 @@ const ActionType = {
     SET_PROFILE_ITEM: 'SET_PROFILE_ITEM',
     ADD_FOLLOWED_ITEM: 'ADD_FOLLOWED_ITEM',
     REMOVE_FOLLOWED: 'REMOVE_FOLLOWED',
+    CLEAR_ALL_FOLLOWEDS: 'CLEAR_ALL_FOLLOWEDS',
     ADD_ARTICLE_PART: 'ADD_ARTICLE_PART',
     CLEAR_ALL_ARTICLES: 'CLEAR_ALL_ARTICLES',
     SET_FILTERWORD: 'SET_FILTERWORD'
@@ -27,7 +28,7 @@ export function getAction(type, otherStatesObj) {
 // for this assignment, we don't make http calls,
 // so the effective statements are commented.
 
-export const url = 'http://ricebookpchw7.herokuapp.com'
+export const url = 'https://ricebookpchw8.herokuapp.com'
 
 export function resource(method, endpoint, payload, notJson){
 
